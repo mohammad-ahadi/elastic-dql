@@ -1,0 +1,2 @@
+djangoql==0.17.1
+elasticsearch==8.1.0
