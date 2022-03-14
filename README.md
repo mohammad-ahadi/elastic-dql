@@ -13,15 +13,15 @@ suggestions for keyword fields.
 Contents
 --------
 
-* `Installation`_
-* `Generating Elasticsearch Queries`_
-* `Custom SchemaFactory`_
-* `Mappings and Suggestions (auto-complete) api`_
-* `Features`_
-* `TODO Tasks`_
-* `DjangoQL project`_
-* `Language reference`_
-* `License`_
+* [`Installation`](#installation)
+* [`Generating Elasticsearch Queries`](#generating-elasticsearch-queries)
+* [`Custom SchemaFactory`](#custom-schemafactory)
+* [`Mappings and Suggestions (auto-complete) api`](#mappings-and-suggestions-api)
+* [`Features`](#features)
+* [`TODO Tasks`](#todo-tasks)
+* [`DjangoQL project`](#djangoql-project)
+* [`Language reference`](#language-reference)
+* [`License`](#license)
 
 Installation
 ------------
@@ -98,7 +98,7 @@ ELASTIC_DQL = {
 
 > :warning: **you must either fill include_indices or exclude_indices not both**
 
-Mappings and Suggestions (auto-complete) api
+Mappings and Suggestions api
 --------------------------------------------
 
 ``Mappings api`` : provides field mappings of index (default_index or get from url parameters)
