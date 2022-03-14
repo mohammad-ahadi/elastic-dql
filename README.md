@@ -164,7 +164,7 @@ DjangoQL project
 
 DjangoQL github page:
 
-`DjangoQL <https://github.com/ivelum/djangoql>`_
+[DjangoQL](https://github.com/ivelum/djangoql)
 
 
 Language reference
@@ -172,7 +172,7 @@ Language reference
 
 The query language is as same as djangoql query language
 
-`Language refrence <https://github.com/ivelum/djangoql#language-reference>`_
+[Language refrence](https://github.com/ivelum/djangoql#language-reference>)
 
 License
 -------
