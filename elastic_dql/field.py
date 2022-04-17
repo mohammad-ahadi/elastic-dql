@@ -29,7 +29,8 @@ class ElasticDjangoQlField(object):
         return self.name
 
     def get_lookup(self, path, operator, value):
-        field_name = '.'.join(path + [self.get_lookup_name()])
+        # field_name = '.'.join(path + [self.get_lookup_name()])
+        field_name = self.get_lookup_name()
         if operator not in self.valid_operators:
             raise FieldError("operator %s is not valid for this type" % operator)
         formatted_value = self.format_value(value)

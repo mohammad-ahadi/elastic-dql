@@ -8,12 +8,10 @@ from .schema import get_schema_instance
 
 def finalize_query(query, inverted):
     base_query = {"query": {
-        "bool": defaultdict(list)
+        "bool": {
+            "filter": [query]
+        }
     }}
-    if inverted:
-        base_query["bool"]["filter"].append(query)
-    else:
-        base_query["bool"]["must_not"].append(query)
     return base_query
 
 
