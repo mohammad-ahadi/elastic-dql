@@ -1,11 +1,20 @@
+from collections import defaultdict
+
 from djangoql.ast import Logical
 from djangoql.parser import DjangoQLParser
 
 from .schema import get_schema_instance
 
 
-def finalize_query(query):
-    return {"query": query}
+def finalize_query(query, inverted):
+    base_query = {"query": {
+        "bool": defaultdict(list)
+    }}
+    if inverted:
+        base_query["bool"]["filter"].append(query)
+    else:
+        base_query["bool"]["must_not"].append(query)
+    return base_query
 
 
 def build_query(expr, schema_instance):
@@ -48,6 +57,6 @@ def get_query(index, search):
     ast = DjangoQLParser().parse(search)
     schema_instance = get_schema_instance(index)
     schema_instance.validate(ast)
-    query = build_query(ast, schema_instance)
-    query = finalize_query(query)
+    query, inverted = build_query(ast, schema_instance)
+    query = finalize_query(query, inverted)
     return query
