@@ -131,17 +131,21 @@ class ElasticDjangoQlSchema(AbstractElasticDjangoQlSchema):
 
     def _get_suggestions_query(self, field_name, search):
         # TODO: seprate query building from schema
-        query = {
-            "exists": {
-                "field": field_name
-            }
-        }
         if search:
-            query["wildcard"] = {
-                field_name: {
-                    "value": "*" + search + "*"
+            query = {
+                "wildcard": {
+                    field_name: {
+                        "value": "*" + search + "*"
+                    }
                 }
             }
+        else:
+            query = {
+                "exists": {
+                    "field": field_name
+                }
+            }
+
         aggregations = {
             "values": {
                 "terms": {"field": field_name}
