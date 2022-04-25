@@ -109,14 +109,18 @@ class InQuery(AbstractQuery):
     invert = False
 
     def generate(self, field_name, value):
-        return [{"match_phrase": {field_name, phrase}} for phrase in value], self.invert
+        query_value = [{"match_phrase": {field_name: phrase}} for phrase in value]
+        query = {'bool': {'minimum_should_match': 1, 'should': query_value}}
+        return query, self.invert
 
 
 class NotInQuery(AbstractQuery):
     invert = True
 
     def generate(self, field_name, value):
-        return [{"match_phrase": {field_name, phrase}} for phrase in value], self.invert
+        query_value = [{"match_phrase": {field_name: phrase}} for phrase in value]
+        query = {'bool': {'minimum_should_match': 1, 'should': query_value}}
+        return query, self.invert
 
 
 class StartsWithQuery(AbstractQuery):

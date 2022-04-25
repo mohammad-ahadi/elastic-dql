@@ -46,8 +46,9 @@ def build_query(expr, schema_instance):
     if inverted:
         base_query["bool"]["must_not"] = [query]
     else:
-        base_query["bool"]["minimum_should_match"] = 1
-        base_query["bool"]["should"] = [query]
+        # base_query["bool"]["minimum_should_match"] = 1
+        # base_query["bool"]["should"] = [query]
+        base_query["bool"]["filter"] = [query]
     return base_query, inverted
 
 

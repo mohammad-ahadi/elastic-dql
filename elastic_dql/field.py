@@ -47,7 +47,8 @@ class ElasticDjangoQlField(object):
         :return: formatted_value:
             formatted_value:
         """
-        return self.field_type(value)
+        formated_value = list(map(self.field_type, value)) if isinstance(value, list) else self.field_type(value)
+        return formated_value
 
     def validate(self, value):
         if not self.nullable and value is None:
